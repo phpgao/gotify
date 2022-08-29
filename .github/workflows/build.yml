@@ -12,10 +12,6 @@ jobs:
         with:
           node-version: '16'
       - uses: actions/checkout@v2
-      - uses: golangci/golangci-lint-action@v2
-        with:
-          version: v1.45
-          args: --timeout=5m
       - run: go mod download
       - run: make download-tools
       - run: (cd ui && yarn)
