@@ -17,14 +17,8 @@ jobs:
       - run: (cd ui && yarn)
       - run: make build-js
       - run: make embed-static
-      - run: make test
-      - run: make check-ci
-      - uses: codecov/codecov-action@v1
-      - if: startsWith(github.ref, 'refs/tags/v')
-        run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
-      - if: startsWith(github.ref, 'refs/tags/v')
-        run: |
-          export LD_FLAGS="-w -s -X main.Version=$VERSION -X main.BuildDate=$(date "+%F-%T") -X main.Commit=$(git rev-parse --verify HEAD) -X main.Mode=prod"
+      - run: |
+          export LD_FLAGS="-w -s -X main.Version=v0.0.1 -X main.BuildDate=$(date "+%F-%T") -X main.Commit=$(git rev-parse --verify HEAD) -X main.Mode=prod"
           make build
           sudo chown -R $UID build
           make package-zip
