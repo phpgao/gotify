@@ -73,7 +73,7 @@ build-docker-amd64: require-version
 	cd ${DOCKER_DIR} && \
 		docker build \
 		-t endoffight/gotify-server:latest \
-		-t endoffight/gotify-server:${VERSION}
+		-t endoffight/gotify-server:${VERSION} .
 	rm ${DOCKER_DIR}gotify-app
 
 build-docker-arm-7: require-version
