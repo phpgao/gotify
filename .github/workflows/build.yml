@@ -18,7 +18,7 @@ jobs:
       - run: make build-js
       - run: make embed-static
       - run: |
-          export LD_FLAGS="-w -s -X main.Version=v1.0.0 -X main.BuildDate=$(date "+%F-%T") -X main.Commit=$(git rev-parse --verify HEAD) -X main.Mode=prod"
+          export LD_FLAGS="-w -s -X main.Version=$VERSION -X main.BuildDate=$(date "+%F-%T") -X main.Commit=$(git rev-parse --verify HEAD) -X main.Mode=prod"
           make build
           sudo chown -R $UID build
           make package-zip
@@ -30,3 +30,4 @@ jobs:
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+          VERSION: v0.0.1
