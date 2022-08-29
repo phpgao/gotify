@@ -110,7 +110,7 @@ build-docker-arm64: require-version
 		-t ghcr.io/gotify/server-arm64:$(shell echo $(VERSION) | cut -d '.' -f -1) .
 	rm ${DOCKER_DIR}gotify-app
 
-build-docker: build-docker-amd64 build-docker-arm-7 build-docker-arm64
+build-docker: build-docker-amd64
 
 build-js:
 	(cd ui && yarn build)
