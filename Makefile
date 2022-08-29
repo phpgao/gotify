@@ -72,14 +72,8 @@ build-docker-amd64: require-version
 	cp ${BUILD_DIR}/gotify-linux-amd64 ./docker/gotify-app
 	cd ${DOCKER_DIR} && \
 		docker build \
-		-t gotify/server:latest \
-		-t gotify/server:${VERSION} \
-		-t gotify/server:$(shell echo $(VERSION) | cut -d '.' -f -2) \
-		-t gotify/server:$(shell echo $(VERSION) | cut -d '.' -f -1) \
-		-t ghcr.io/gotify/server:latest \
-		-t ghcr.io/gotify/server:${VERSION} \
-		-t ghcr.io/gotify/server:$(shell echo $(VERSION) | cut -d '.' -f -2) \
-		-t ghcr.io/gotify/server:$(shell echo $(VERSION) | cut -d '.' -f -1) .
+		-t endoffight/gotify-server:latest \
+		-t endoffight/gotify-server:${VERSION}
 	rm ${DOCKER_DIR}gotify-app
 
 build-docker-arm-7: require-version
